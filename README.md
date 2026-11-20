@@ -1,22 +1,34 @@
-# Looking Right Is Not Being Right
+# Scene Fidelity
 
-**Evaluating the Geometry of Agent-Built 3D Scenes**
+**Looking Right Is Not Being Right: Evaluating the Geometry of Agent-Built 3D Scenes**
 
-A convincing rendering does not establish an accurate reconstruction. This project studies the geometry of editable 3D scenes built by coding agents: what they recover from video, how they use geometric inputs, and whether their revisions correct geometric errors.
+How accurate are agent-built 3D scenes? Explore three agents’ reconstructions of the same room, compare their geometry with a laser scan, and browse the model benchmark.
 
-We evaluate scene geometry against laser scans and study geometric feedback that compares saved scenes with the points available to the agent.
-
-## Project resources
-
-- [Hugging Face release repository](https://huggingface.co/datasets/Zylong/looking-right-being-right)
-- Paper: arXiv submission in preparation.
-- Interactive demo: public deployment in preparation. The local prototype compares Terra, Sol, and Astra on the same room and input video, with camera-synchronized surface reveal.
+- **[Interactive demo](https://albertlongzi.github.io/looking-right-being-right/)**
+- **Paper:** submitted to arXiv; public link forthcoming.
+- **[Data release repository](https://huggingface.co/datasets/Zylong/looking-right-being-right)** — further releases in preparation.
 - Evaluation code and agent harness: release in preparation.
 
-The demo's progressive reveal visualizes the final saved reconstruction using the input camera and occlusion checks; it is not a replay of online reconstruction or actual agent save times.
+## Interactive demo
 
-## Release status
+The page compares GPT-6.1 Terra, GPT-6.1 Sol, and GPT-6 Astra with video-only and estimated-geometric-input settings. The score atlas includes 71 configurations, including the GPT-6.2 Sol and Astra video-only evaluations. Source labels identify different reconstruction setups.
 
-This repository currently contains the project overview. Code, documentation, and downloadable artifacts will be added as they are prepared. Links and availability will be updated here.
+The animation reveals saved final geometry along the input camera path. It is not a replay of online reconstruction or actual agent save times. Use the scan slider to compare aligned geometry at the same viewpoint.
 
-The study uses ARKitScenes. Obtain original data from the [official ARKitScenes repository](https://github.com/apple/ARKitScenes) under its applicable terms; this project overview does not redistribute source videos or scans.
+## Run locally
+
+```sh
+python3 -m http.server 8000 --directory site
+```
+
+Open http://localhost:8000/. For deployment validation, run `python3 tools/check_site.py`.
+
+## Deploy
+
+GitHub Pages uses `.github/workflows/pages.yml`. Pushes run validation only. To publish, open **Actions → Deploy Scene Fidelity → Run workflow**. This explicit deploy step makes it possible to coordinate publication with an arXiv announcement. A previous version can be restored by running the workflow at a previous release branch or reverting a site change.
+
+## Assets and licenses
+
+The non-commercial research demo includes one ARKitScenes capture (47204578), its VSI-Bench video copy, converted camera poses, sampled reference geometry, and agent-produced browser geometry. Original dataset terms remain applicable; these assets are not relicensed under the paper’s CC BY license.
+
+See [sources and licenses](site/credits.html), [ARKitScenes license](site/licenses/ARKitScenes-LICENSE.txt), [Three.js license](site/vendor/THREE-LICENSE.txt), and [Lobe Icons license](site/logos/LICENSE). Brand marks identify evaluated models, without endorsement.
