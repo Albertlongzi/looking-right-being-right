@@ -11,7 +11,7 @@ How accurate are agent-built 3D scenes? Explore three agents’ reconstructions 
 
 ## Interactive demo
 
-The page compares GPT-6.1 Terra, GPT-6.1 Sol, and GPT-6 Astra with video-only and estimated-geometric-input settings. The score atlas includes 71 configurations, including the GPT-6.2 Sol and Astra video-only evaluations. Source labels identify different reconstruction setups.
+The page compares GPT-6.1 Terra, GPT-6.1 Sol, and GPT-6 Astra with video-only and estimated-geometric-input settings. The benchmark ranks 69 public reconstruction configurations by geometric accuracy.
 
 The animation reveals saved final geometry along the input camera path. It is not a replay of online reconstruction or actual agent save times. Use the scan slider to compare aligned geometry at the same viewpoint.
 
